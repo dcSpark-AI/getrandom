@@ -31,22 +31,23 @@ wasm-bindgen-test = "0.3.18"
 
 [features]
 # Implement std-only traits for getrandom::Error
-std = []
+std = ["js"]
 # Feature to enable fallback RDRAND-based implementation on x86/x86_64
-rdrand = []
+rdrand = ["js"]
 # Feature to enable JavaScript bindings on wasm*-unknown-unknown
 js = ["wasm-bindgen", "js-sys"]
 # Feature to enable custom RNG implementations
-custom = []
+custom = ["js"]
 # Unstable feature to support being a libstd dependency
 rustc-dep-of-std = [
   "compiler_builtins",
   "core",
   "libc/rustc-dep-of-std",
   "wasi/rustc-dep-of-std",
+  "js"
 ]
 # Unstable/test-only feature to run wasm-bindgen tests in a browser
-test-in-browser = []
+test-in-browser = ["js"]
 
 [package.metadata.docs.rs]
 features = ["std", "custom"]
